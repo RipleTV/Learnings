@@ -76,15 +76,56 @@ contract Strings {
 	yourName[/*address of wallet for example*/] = true;
 }
 
-contract functions {
+contract Functions {
 	
 	//  AreaOfVisibility
 
-	// public  -- всем (контрактам и человекам)
-	// private	-- только этому контракту
-	// external	-- только из вне контракта
-	// internal -- контракту и наследствующим контрактам
+	public  -- всем (контрактам и человекам)
+	private	-- только этому контракту
+	external	-- только из вне контракта
+	internal -- контракту и наследствующим контрактам
 
-	// payable -- функции которые могут принять деньги
-
+	payable -- функции которые могут принять деньги
 }
+
+contract Arrays {
+	// типДанных[размер] название; 
+
+	// массив на 10 элементов без знака
+	uint[10] items;
+	uint[10][3] mItems; // двумерный массив
+	// WARNING: двумерные массивы читаются задом на перед
+	// Uint[10][3] это массив с длиной 3 для сторк и 10 для столбцов
+
+	// массив с бесконечнм количеством значений без знаков
+	uint[] infinityItems;
+	// методы для динамического массива
+	// добавить значение в конец массива
+	infinityItems.push(1); // ==> items[0] = [1]
+	infinityItems.pop(); // вытащить и удалить последний эллемент массива
+
+	function sample() public {
+		//название[индекс] = значение;
+		items[0] = 12;
+		items[1] = 100;
+		mItems[0] = [1, 2, 3];
+
+		//получить значение как и везде:
+		items[1];
+		//считать длинну массива
+		items.length;
+
+		//создать временный массив
+		uint[] memory tempItems = new uint [](7);
+	//тип данных хранения название = ? данных (размер массива)
+	}
+}
+
+contract Loops {
+		funtion starter() public {
+			for(uint i = 0; i < items.length; i++) {
+				console.log(items[i]);
+			}
+		}
+	}
+
