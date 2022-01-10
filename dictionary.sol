@@ -63,6 +63,9 @@ contract Strings {
 	// постоянное хранение внути блокчейна
 	string storage myString;
 
+	// external string данные могут быть полученны только из-вне контракта (очень похожий на memory)
+	string calldata myString;
+
 	// address
 	// 0x123abOBa...
 	// 120 bit
@@ -83,4 +86,5 @@ contract functions {
 	// internal -- контракту и наследствующим контрактам
 
 	// payable -- функции которые могут принять деньги
+
 }
