@@ -68,10 +68,12 @@ contract Strings {
 
 	// address
 	// 0x123abOBa...
-	// 120 bit
+	// 160 bit = 20 Байт
 	address myAddress;
 
 	// mapping
+	// массив в которм мы можем присваивать булевые значения для аддресов
+	// mapping (первый тип => тип который мы присваиваем первому) название
 	mapping (address => bool) yourName;
 	yourName[/*address of wallet for example*/] = true;
 }
@@ -133,6 +135,9 @@ contract Enum {
 	//enum Название {тип данных}
 	enum Statuses {Unpaid, Paid, Shipped};
 	// Создает тип данных со значениями в скобочках
+	// Проще говоря это некий список, кортеж из предопределенных значений 
+	// которые мы можем присваивать переменным
+
 	// присваиваем переменной тип Statuses
 	Statuses status;
 
@@ -146,6 +151,28 @@ contract Enum {
 		}
 		status = Statuses.Shipped;
 	}
+}
 
+contract Struct {
+	// структура с {елементами}
+	struct Payment {
+		uint ammount;
+		uint timestamp;
+	}
+
+	struct Balance {
+		uint totalBalance;
+		mapping (uint => Payment) payments;
+	}
+
+	// массив payments из структуры Payment c типом public
+	Payment[] public payments;
+
+	function getData() public payable {
+		// структура memory название = Структура(Данные для структуры)
+		Payment memory payment = Payment(msg.value, block.timestamp);
+		//засовываем новый платеж в массив
+		payments.push(payment);
+	}
 }
 
