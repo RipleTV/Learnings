@@ -122,10 +122,30 @@ contract Arrays {
 }
 
 contract Loops {
-		funtion starter() public {
-			for(uint i = 0; i < items.length; i++) {
-				console.log(items[i]);
-			}
+	funtion starter() public {
+		for(uint i = 0; i < items.length; i++) {
+			console.log(items[i]);
 		}
 	}
+}
+
+contract Enum {
+	//enum Название {тип данных}
+	enum Statuses {Unpaid, Paid, Shipped};
+	// Создает тип данных со значениями в скобочках
+	// присваиваем переменной тип Statuses
+	Statuses status;
+
+	function paid() {
+		status = Statuses.Paid;
+	}
+
+	function ship() {
+		if(status == Statuses.Paid) {
+			// some code...
+		}
+		status = Statuses.Shipped;
+	}
+
+}
 
