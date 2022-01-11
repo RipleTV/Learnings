@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 
 contract lesson6{
     address public owner;
-    function lesson6(uint _money) public {
+    function lesson6() public {
         owner = msg.sender;
     }
 
