@@ -8,7 +8,7 @@ async function deploy() {
         await provider.send("eth_requestAccounts", []);
         const signer = provider.getSigner();
 
-        const Dapp = await ethers.ContractFactory(abi, bytecode, signer)
+        const Dapp = new ethers.ContractFactory(abi, bytecode, signer)
         const dapp = await Dapp.deploy(10);
         console.log(dapp.address);
         console.log(dapp.deployTransaction);
