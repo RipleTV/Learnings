@@ -1,3 +1,5 @@
+pragma solidity ^0.8.0;
+
 
 contract Boolean {
 	
@@ -106,6 +108,13 @@ contract Arrays {
 	// WARNING: двумерные массивы читаются задом на перед
 	// Uint[10][3] это массив с длиной 3 для сторк и 10 для столбцов
 
+	// так выглядит заполнение двухмерного массива mItems
+	mItems = [
+		[1,2,3,4,5],
+		[2,4,6,8,0],
+		[1,3,5,7,8]
+	]
+
 	// массив с бесконечнм количеством значений без знаков
 	uint[] infinityItems;
 	// методы для динамического массива
@@ -189,3 +198,39 @@ contract Super {
 
 }
 
+contract Enum {
+	// Енум нужен для того чтобы создать свой тип данных
+	// Первое значение будет выставляться по стандарту
+	enum Status { Paid, Deliverd, Received }
+	Status public currentStatus;
+
+	function paid() public {
+		currentStatus = Status.Paid;
+	}
+	// return 0
+
+	function delivered() public {
+		currentStatus = Status.Deliverd;
+	}
+	// return 1
+}
+
+contract Bytes {
+	// Байтовые массивы
+	// Можем записывать строки но они будут определяться как последовательность байт
+	bytes32 public myVar = "test"; 
+	// Минимальная размерность 1 байт = 8 бит
+	//  от 1 --> до 32 Байтов\
+	// 32 * 8 = 256 бит
+	// return 0x7465737400000000000000000000000000000000000000000000000000000000
+
+	// Можем делать динамические массивы
+	bytes public myDynVar = "test";
+	// return 0x74657374
+
+	bytes public myRusDynVar = unicode"Юникод нужен для кирилицы"
+	// Length
+	function lengthSize() public {
+		return myDynVar.length // return 47
+	}
+} 
